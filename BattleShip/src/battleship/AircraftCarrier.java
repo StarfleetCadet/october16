@@ -9,14 +9,15 @@ package battleship;
  *
  * @author aviva
  */
-public class AircraftCarrier extends Ship
+public class AircraftCarrier extends Ship 
 {
-    public AircraftCarrier(int x, int y, boolean vertical)
+
+    public AircraftCarrier(int x, int y, boolean vertical) 
     {
         length = 6;
         this.x = x;
         this.y = y;
         this.vertical = vertical;
     }
-    
+
 }

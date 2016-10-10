@@ -11,13 +11,14 @@ package battleship;
  */
 public class Destroyer extends Ship 
 {
-    public Destroyer(int x, int y, boolean vertical)
+
+    public Destroyer(int x, int y, boolean vertical) 
     {
         length = 4;
         this.x = x;
         this.y = y;
         this.vertical = vertical;
-        
+
     }
-    
+
 }

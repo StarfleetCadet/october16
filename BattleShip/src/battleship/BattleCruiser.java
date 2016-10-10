@@ -9,14 +9,14 @@ package battleship;
  *
  * @author aviva
  */
-public class BattleCruiser extends Ship
+public class BattleCruiser extends Ship 
 {
-    public BattleCruiser(int x, int y, boolean vertical)
-    {
+
+    public BattleCruiser(int x, int y, boolean vertical) {
         length = 5;
         this.x = x;
         this.y = y;
         this.vertical = vertical;
     }
-    
+
 }
