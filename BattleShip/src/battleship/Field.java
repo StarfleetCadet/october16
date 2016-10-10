@@ -30,6 +30,39 @@ public class Field
         return hits;
     }
     
-    public void drawfield()
+    public void drawField()
+    {
+        for(int i = -1; i<maxY; i++)
+        {
+            if (i == -1)
+            {
+                System.out.print(" A B C D E F G H I J K L M N O\n");
+                continue;
+            }
+            
+            for(int j = -1; j<maxX; j++)
+            {                   
+                if(j == -1)
+                {
+                    System.out.print(alphabet[i]+" ");
+                    continue;
+                }
+                
+                if (hit[j][i] == null)
+                {
+                    System.out.print("~ ");
+                }
+                else if (hit[j][i] == true)
+                {
+                    System.out.print("x ");
+                }
+                else
+                {
+                    System.out.print("o ");
+                }
+            }
+            System.out.print("\n");
+        }
+    }
     
 }
