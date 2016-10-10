@@ -9,7 +9,15 @@ package battleship;
  *
  * @author aviva
  */
-public class InflatableBoat 
+public class InflatableBoat extends Ship
 {
+    public InflatableBoat (int x, int y, boolean vertical)
+    {
+        length = 2;
+        this.x = x;
+        this.y = y;
+        this.vertical = vertical;
+    }
+    
     
 }

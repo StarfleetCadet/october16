@@ -11,5 +11,24 @@ package battleship;
  */
 public class Ship 
 {
+    int length;
+    int x;
+    int y;
+    boolean vertical;
+    
+    public boolean checkHit(int x, int y)
+    {
+        boolean hit = false;
+        if (y != this.y) return false;
+        
+        int bow = this.x;
+        int back = this.x + this.length;
+        
+        if (x >= bow && x < back)
+        {
+            return true;
+        }
+        return hit;
+    }
     
 }
