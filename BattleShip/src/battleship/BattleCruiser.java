@@ -17,6 +17,29 @@ public class BattleCruiser extends Ship
         this.x = x;
         this.y = y;
         this.vertical = vertical;
+        createPositions();
+        shipClass = "Battle Cruiser";
+    }
+    
+    
+    public static BattleCruiser getFromUser() 
+    {
+        System.out.println("Create your "+shipClass);
+        String xPos = Tastatur.Eingabe.readLine("x: ");
+        int x = Field.getIntFromStrCoord(xPos);
+        String yPos = Tastatur.Eingabe.readLine("y: ");
+        int y = Field.getIntFromStrCoord(yPos);
+        
+        boolean vertical = false;
+        String direction = Tastatur.Eingabe.readLine("vertical (v) or horizontal (h)? ");
+        
+        if (direction.equals("v"))
+        {
+            vertical = true;
+        }
+        
+        return new BattleCruiser(x, y, vertical);
+        
     }
 
 }

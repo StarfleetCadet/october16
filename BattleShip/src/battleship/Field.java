@@ -13,12 +13,13 @@ import java.util.List;
  */
 public class Field 
 {
+    String playerName = "Angry Trump";
     int maxX = 15;
     int maxY = 15;
     Boolean[][] hit = new Boolean[maxX][maxY];
     public List<Ship> ships = new ArrayList<Ship>();
     
-    String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"};
+    public static String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O"};
     
     public boolean shot(int x, int y)
     {
@@ -26,9 +27,50 @@ public class Field
         for(Ship currentShip : ships)
         {
             hits = currentShip.checkHit(x, y);
+            
+            // Remove ship from field if it is destroyed
+            if (currentShip.stillSwimming == false)
+            {
+                ships.remove(currentShip);
+            }
+            
+            if (hits) {
+                break;
+            }
+        
         }
+            
+        hit[x][y] = hits;
+        
         return hits;
     }
+    
+    public void getCoordsFromUser()
+    {
+        System.out.println(playerName + ", it's your turn!");
+        String xLetter = Tastatur.Eingabe.readLine("X-Koordinate: ");
+        String yLetter = Tastatur.Eingabe.readLine("Y-Koordinate: ");
+        
+        int x = getIntFromStrCoord(xLetter);
+        int y = getIntFromStrCoord(yLetter);
+        shot(x, y);        
+        drawField();
+    }
+    
+    public static int getIntFromStrCoord(String coord)
+    {
+        int val = 0;
+        
+        for (int i = 0; i < alphabet.length; i++)
+        {
+            if (alphabet[i].equals(coord)) {
+                return i;
+            }
+        }
+        
+        return val;
+    }
+    
     
     public void drawField()
     {
@@ -36,7 +78,7 @@ public class Field
         {
             if (i == -1)
             {
-                System.out.print(" A B C D E F G H I J K L M N O\n");
+                System.out.print("  A B C D E F G H I J K L M N O\n");
                 continue;
             }
             

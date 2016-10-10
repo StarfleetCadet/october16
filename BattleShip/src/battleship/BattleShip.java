@@ -16,18 +16,37 @@ public class BattleShip {
      */
     public static void main(String[] args) 
     {
-        InflatableBoat trump = new InflatableBoat(0, 0, false);
-        AircraftCarrier nimitz = new AircraftCarrier(0, 2, false);
-        Destroyer bainbridge = new Destroyer(1, 5, false);
-        BattleCruiser alaska = new BattleCruiser(5, 5, false);
-
-        Field myField = new Field();
-        myField.ships.add(trump);
-        myField.ships.add(nimitz);
-        myField.ships.add(alaska);
-        myField.ships.add(bainbridge);
-
-        myField.shot(2, 2);
+        Field player1Field = new Field();
+        Field player2Field = new Field();
+     
+        player1Field.playerName = Tastatur.Eingabe.readLine("Player 1, enter your name: ");
+        player2Field.playerName = Tastatur.Eingabe.readLine("Player 2, enter your name: ");
+        
+        System.out.println(player1Field.playerName + " position your Boats");
+        player2Field.ships.add(InflatableBoat.getFromUser());
+        player2Field.ships.add(Destroyer.getFromUser());
+        player2Field.ships.add(BattleCruiser.getFromUser());
+        player2Field.ships.add(AircraftCarrier.getFromUser());
+        
+        
+        System.out.println(player2Field.playerName + " position your Battleships!");
+        player1Field.ships.add(InflatableBoat.getFromUser());
+        player1Field.ships.add(Destroyer.getFromUser());
+        player1Field.ships.add(BattleCruiser.getFromUser());
+        player1Field.ships.add(AircraftCarrier.getFromUser());
+        
+        while (player1Field.ships.isEmpty() == false && player2Field.ships.isEmpty() == false)
+        {
+            player1Field.getCoordsFromUser();
+            player2Field.getCoordsFromUser();
+        }
+        
+        if (player1Field.ships.isEmpty()) 
+        {
+            System.out.println("*** "+player1Field.playerName+" WINS THIS BATTLE! ***");
+        } else {
+            System.out.println("*** "+player2Field.playerName+" WINS THIS BATTLE! ***");
+        }
 
     }
 

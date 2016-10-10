@@ -18,7 +18,30 @@ public class Destroyer extends Ship
         this.x = x;
         this.y = y;
         this.vertical = vertical;
+        createPositions();
+        shipClass = "Destroyer";
 
+    }
+    
+    
+    public static Destroyer getFromUser() 
+    {
+        System.out.println("Create your "+shipClass);
+        String xPos = Tastatur.Eingabe.readLine("x: ");
+        int x = Field.getIntFromStrCoord(xPos);
+        String yPos = Tastatur.Eingabe.readLine("y: ");
+        int y = Field.getIntFromStrCoord(yPos);
+        
+        boolean vertical = false;
+        String direction = Tastatur.Eingabe.readLine("vertical (v) or horizontal (h)? ");
+        
+        if (direction.equals("v"))
+        {
+            vertical = true;
+        }
+        
+        return new Destroyer(x, y, vertical);
+        
     }
 
 }

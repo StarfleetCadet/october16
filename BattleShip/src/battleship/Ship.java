@@ -14,10 +14,13 @@ import java.util.List;
  */
 public class Ship 
 {
+    public static String shipClass = "Ship";
     int length;
     int x;
     int y;
     boolean vertical;
+    
+    boolean stillSwimming = true;
     
     List<int[]> positions = new ArrayList<int[]>();
     
@@ -26,61 +29,48 @@ public class Ship
      */
     protected void createPositions()
     {
-        // First coordinates are our ships position
-        int[] coords = {this.x, this.y};        
-        positions.add(coords);
-        
         if (vertical)
         {
-            
+            for (int i = 0; i < length; i++)
+            {
+                int[] coords = {this.x, this.y + i};        
+                positions.add(coords);
+            }
         } 
         else 
         {
-            
+            for (int i = 0; i < length; i++)
+            {
+                int[] coords = {this.x + i, this.y};        
+                positions.add(coords);
+            }            
         }
         
         
         
     }
     
-    
-    
+     
     public boolean checkHit(int x, int y)
     {
         boolean hit = false;
-        
-        // Ship in vertical position?
-        if (vertical) 
-        {
-            // X-Wert vom Schuss liegt neben x-Wert vom vertikal liegenden Schiff: Nicht getroffen
-            if (x != this.x) return false;
+
+        // Check lists of positions, one at a time
+        for (int[] coords : positions) {
             
-            // Schuss liegt auf einer Linie mit dem Schiff. Liegt er auch zwischen Bug und Heck?
-            int yBow = this.y;
-            int yBack = yBow + this.length;
-            
-            if (y >= yBow && y < yBack)
-            {
-                // Schiff wurde zwischen Bug und Heck getroffen.
-                return true;
+            if (coords[0] == x && coords[1] == y) {
+                hit = true;
+                positions.remove(coords);
+                break;
             }
-            
-            
-        } 
-        else 
-        {
-            // Schiff liegt horizontal. D. h. wenn Y-Wert vom Schuss nicht dem Y-Wert vom Schiff entspricht,
-            // kann das Schiff nicht getroffen worden sein.
-            if (y != this.y) return false;
-
-            int xbow = this.x;
-            int xback = this.x + this.length;
-
-            if (x >= xbow && x < xback)
-            {
-                return true;
-            }            
         }
+        
+        if (positions.isEmpty())
+        {
+            stillSwimming = false;
+            System.out.println("Hurray! You just destroyed a " + shipClass);
+        }
+        
         return hit;
     }
     
