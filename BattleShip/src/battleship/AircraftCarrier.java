@@ -12,7 +12,7 @@ package battleship;
 public class AircraftCarrier extends Ship 
 {
 
-    public AircraftCarrier(int x, int y, boolean vertical) 
+    public AircraftCarrier(int x, int y, boolean vertical, String shipClass) 
     {
         length = 6;
         this.x = x;
@@ -39,7 +39,7 @@ public class AircraftCarrier extends Ship
             vertical = true;
         }
         
-        return new AircraftCarrier(x, y, vertical);
+        return new AircraftCarrier(x, y, vertical, shipClass);
         
     }
 

@@ -14,7 +14,8 @@ import java.util.List;
  */
 public class Ship 
 {
-    public static String shipClass = "Ship";
+    //geht hier zu erst rein
+    public static String shipClass = "";
     int length;
     int x;
     int y;
@@ -56,7 +57,8 @@ public class Ship
         boolean hit = false;
 
         // Check lists of positions, one at a time
-        for (int[] coords : positions) {
+        for (int[] coords : positions) 
+        {
             
             if (coords[0] == x && coords[1] == y) {
                 hit = true;
@@ -68,7 +70,7 @@ public class Ship
         if (positions.isEmpty())
         {
             stillSwimming = false;
-            System.out.println("Hurray! You just destroyed a " + shipClass);
+            System.out.println("Hurray! You just destroyed a "); //+ shipClass);
         }
         
         return hit;

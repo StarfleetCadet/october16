@@ -29,7 +29,7 @@ public class BattleShip {
         player2Field.ships.add(AircraftCarrier.getFromUser());
         
         
-        System.out.println(player2Field.playerName + " position your Battleships!");
+        System.out.println(player2Field.playerName + " position your Boats!");
         player1Field.ships.add(InflatableBoat.getFromUser());
         player1Field.ships.add(Destroyer.getFromUser());
         player1Field.ships.add(BattleCruiser.getFromUser());

@@ -12,7 +12,7 @@ package battleship;
 public class Destroyer extends Ship 
 {
 
-    public Destroyer(int x, int y, boolean vertical) 
+    public Destroyer(int x, int y, boolean vertical, String shipClass) 
     {
         length = 4;
         this.x = x;
@@ -40,7 +40,7 @@ public class Destroyer extends Ship
             vertical = true;
         }
         
-        return new Destroyer(x, y, vertical);
+        return new Destroyer(x, y, vertical, shipClass);
         
     }
 
