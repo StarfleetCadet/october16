@@ -11,6 +11,8 @@ package battleship;
  */
 public class InflatableBoat extends Ship 
 {
+    
+    public static String shipClass = "Inflatable Boat";
 
     public InflatableBoat(int x, int y, boolean vertical) 
     {
@@ -19,12 +21,11 @@ public class InflatableBoat extends Ship
         this.y = y;
         this.vertical = vertical;
         createPositions();
-        shipClass = "Inflatable Boat";
     }
     
     public static InflatableBoat getFromUser() 
     {
-        System.out.println("Create your "+shipClass);
+        System.out.println("Create your "+InflatableBoat.shipClass);
         String xPos = Tastatur.Eingabe.readLine("x: ");
         int x = Field.getIntFromStrCoord(xPos);
         String yPos = Tastatur.Eingabe.readLine("y: ");

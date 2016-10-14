@@ -25,20 +25,31 @@ public class BattleShip {
         System.out.println(player1Field.playerName + " position your Boats");
         player2Field.ships.add(InflatableBoat.getFromUser());
         player2Field.ships.add(Destroyer.getFromUser());
-        player2Field.ships.add(BattleCruiser.getFromUser());
-        player2Field.ships.add(AircraftCarrier.getFromUser());
+        //player2Field.ships.add(BattleCruiser.getFromUser());
+        //player2Field.ships.add(AircraftCarrier.getFromUser());
         
+        player1Field.clearScreen();
         
         System.out.println(player2Field.playerName + " position your Boats!");
         player1Field.ships.add(InflatableBoat.getFromUser());
         player1Field.ships.add(Destroyer.getFromUser());
-        player1Field.ships.add(BattleCruiser.getFromUser());
-        player1Field.ships.add(AircraftCarrier.getFromUser());
+        //player1Field.ships.add(BattleCruiser.getFromUser());
+        //player1Field.ships.add(AircraftCarrier.getFromUser());
         
         while (player1Field.ships.isEmpty() == false && player2Field.ships.isEmpty() == false)
         {
-            player1Field.getCoordsFromUser();
-            player2Field.getCoordsFromUser();
+            player1Field.clearScreen();
+            player1Field.drawField();
+            player1Field.fireShot();
+            
+            if(player1Field.ships.isEmpty())
+            { 
+                break;
+            }
+            
+            player2Field.clearScreen();
+            player2Field.drawField();
+            player2Field.fireShot();
         }
         
         if (player1Field.ships.isEmpty()) 

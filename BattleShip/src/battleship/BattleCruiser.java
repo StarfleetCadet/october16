@@ -11,6 +11,7 @@ package battleship;
  */
 public class BattleCruiser extends Ship 
 {
+    public static String shipClass = "Battle Cruiser";
 
     public BattleCruiser(int x, int y, boolean vertical, String shipClass) {
         length = 5;
@@ -18,7 +19,6 @@ public class BattleCruiser extends Ship
         this.y = y;
         this.vertical = vertical;
         createPositions();
-        shipClass = "Battle Cruiser";
     }
     
     
