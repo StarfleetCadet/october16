@@ -1,0 +1,4 @@
+-class design for projekt 'lernprogramm'
+-using sql database for 'lernprogramm'
+-implemented classes:lernprogramm, FXMLController,DBConnection,IDBModel,Question
+-research java database connection
