@@ -14,5 +14,5 @@ public interface IDBModel
     public void add();
     public void delete();
     public void update();
-    //public void find();
+    public void find();
 }
