@@ -30,38 +30,32 @@ public class Question implements IDBModel
     
     public void add() 
     {
-        DBConnectionBuilder myBuilder = new DBConnectionBuilder();        
+        DBConnectionBuilder myBuilder = new DBConnectionBuilder();
+        // todo: use singleton instead, with method "getInstance()"
         Connection conn = myBuilder.getConnection();
         
         if(conn != null)
         {
-            try 
+            try
             {
-          
-            String sql = "INSERT INTO questions(category, question, correct_answer, level) " +
-                         "VALUES(?, ?, ?, ?)";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-          
-            preparedStatement.setString(1, category);
-            
-            preparedStatement.setString(2, question);
-            
-            preparedStatement.setString(3, correctAnswer);
-             
-            preparedStatement.setInt(4, level);
-          
-            preparedStatement.executeUpdate();
+                String sql = "INSERT INTO questions(category, question, correct_answer, level) " +
+                             "VALUES(?, ?, ?, ?)";
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
-           
-          } 
+                preparedStatement.setString(1, category);
+                preparedStatement.setString(2, question);
+                preparedStatement.setString(3, correctAnswer);
+                preparedStatement.setInt(4, level);
+
+                preparedStatement.executeUpdate();
+            }
             catch (SQLException e)
-          {
-            e.printStackTrace();
-          }
+            {
+                e.printStackTrace();
+            }
         }
         
         myBuilder.close();
-        
     }
 
     @Override

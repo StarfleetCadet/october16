@@ -43,14 +43,16 @@ public class FXMLDocumentController implements Initializable
     private void handleBtnAddQuestionAction(ActionEvent event) 
     {
         Question toAdd = new Question();
+        
         toAdd.setCategory(categoriesComboBox.getValue());
         toAdd.setCorrectAnswer(answerField.getText());
         toAdd.setLevel((int) (Math.round(levelSlider.getValue())));
         toAdd.setQuestion(questionField.getText());
+        
         toAdd.add();
+        
         questionField.clear();
         answerField.clear();  
-        
     }
     
     @Override
