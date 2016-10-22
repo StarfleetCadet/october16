@@ -1,0 +1,4 @@
+-build class QuestionHelper for program 'lernprogramm'
+-coding methods for 'lernprogramm':getQuestionIdsByCategoryAndLevel, selectRandomQuestionId, 
+-getRandomQuestion, getById, handleBtnNewQuestion
+-starting new java tutorial
