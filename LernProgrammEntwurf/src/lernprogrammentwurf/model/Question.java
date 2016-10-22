@@ -7,7 +7,11 @@ package lernprogrammentwurf.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import lernprogrammentwurf.util.QuestionHelper;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,7 +32,7 @@ public class Question implements IDBModel
     
     
     
-    public void add() 
+    public void addNewQuestion() 
     {
         DBConnectionBuilder myBuilder = new DBConnectionBuilder();
         // todo: use singleton instead, with method "getInstance()"
@@ -56,6 +60,33 @@ public class Question implements IDBModel
         }
         
         myBuilder.close();
+    }
+    
+    public void getById(int questionId)
+    {
+        try{
+            
+            DBConnectionBuilder myBuilder = new DBConnectionBuilder();
+            Connection conn = myBuilder.getConnection();
+            
+            String query = "SELECT id, category, question, correct_answer, level FROM question WHERE id = ?;";
+            
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, questionId);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            rs.next();
+            
+            this.id = rs.getInt("id");
+            this.category = rs.getString("category");
+            this.correctAnswer = rs.getString("correct_answer");
+            this.level = rs.getInt("level");
+            this.question = rs.getString("question");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestionHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

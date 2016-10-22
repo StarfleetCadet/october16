@@ -13,10 +13,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import lernprogrammentwurf.model.Question;
-
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import lernprogrammentwurf.util.QuestionHelper;
 
 /**
  *
@@ -30,15 +30,33 @@ public class FXMLDocumentController implements Initializable
 
     @FXML
     private ComboBox<String> categoriesComboBox;
+    
+    @FXML
+    private ComboBox<String> chooseCategoryComboBox;
+    
+    @FXML
+    private ComboBox<Integer> chooseLevelComboBox;
 
     @FXML
     private TextArea questionField;
 
     @FXML
     private TextArea answerField;
+    
+    @FXML
+    private TextArea questionLearnField;
+    
+    
+    @FXML
+    private TextArea answerLearnField;
+    
+    @FXML
+    private TextArea notesField;
 
     @FXML
     private Slider levelSlider;
+    
+    private Question newQuestion = null;
 
     @FXML
     private void handleBtnAddQuestionAction(ActionEvent event)
@@ -51,11 +69,30 @@ public class FXMLDocumentController implements Initializable
         toAdd.setLevel((int) (Math.round(levelSlider.getValue())));
         toAdd.setQuestion(questionField.getText());
 
-        toAdd.add();
+        toAdd.addNewQuestion();
 
         questionField.clear();
         answerField.clear();
-
+    }
+    
+    @FXML
+    private void handleBtnNewQuestion(ActionEvent event)
+    {
+        newQuestion = QuestionHelper.getRandomQuestion(chooseCategoryComboBox.getValue(), chooseLevelComboBox.getValue());
+        questionLearnField.setText(newQuestion.getQuestion());
+        
+        answerLearnField.clear();
+        notesField.clear();
+    }
+    
+    @FXML
+    private void handleBtnDiscoverAnswerAction(ActionEvent event)
+    {
+        
+        if (newQuestion != null)
+        {
+            answerLearnField.setText(newQuestion.getCorrectAnswer());
+        }
     }
 
     @Override
@@ -63,6 +100,8 @@ public class FXMLDocumentController implements Initializable
     {
         Arrays.sort(Question.categories);
         categoriesComboBox.getItems().addAll(Question.categories);
+        chooseCategoryComboBox.getItems().addAll(Question.categories);
+        chooseLevelComboBox.getItems().addAll(1, 2, 3, 4, 5);
 
     }
 

@@ -11,7 +11,7 @@ package lernprogrammentwurf.model;
  */
 public interface IDBModel 
 {
-    public void add();
+    public void addNewQuestion();
     public void delete();
     public void update();
     public void find();
