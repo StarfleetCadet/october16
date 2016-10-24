@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import lernprogrammentwurf.util.QuestionHelper;
 import java.util.logging.Logger;
+import java.lang.Comparable;
+import java.util.Arrays;
 
 /**
  *
@@ -69,7 +71,7 @@ public class Question implements IDBModel
             DBConnectionBuilder myBuilder = new DBConnectionBuilder();
             Connection conn = myBuilder.getConnection();
             
-            String query = "SELECT id, category, question, correct_answer, level FROM question WHERE id = ?;";
+            String query = "SELECT id, category, question, correct_answer, level FROM questions WHERE id = ?;";
             
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             preparedStatement.setInt(1, questionId);

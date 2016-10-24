@@ -64,7 +64,7 @@
                               <Font size="14.0" />
                            </font>
                         </TextArea>
-                        <TextArea fx:id="answerLearnField" layoutX="410.0" layoutY="38.0" prefHeight="200.0" prefWidth="350.0" wrapText="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+                        <TextArea fx:id="answerLearnField" editable="false" layoutX="410.0" layoutY="38.0" prefHeight="200.0" prefWidth="350.0" wrapText="true" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -93,12 +93,12 @@
                               <Font size="14.0" />
                            </font></Label>
                         <ComboBox fx:id="chooseCategoryComboBox" layoutX="20.0" layoutY="278.0" prefWidth="150.0" promptText="Kategorie" />
-                        <ComboBox fx:id="choseLevelComboBox" layoutX="220.0" layoutY="278.0" prefWidth="150.0" promptText="Schwierigkeitsgrad" />
-                        <Button fx:id="btnDiscoverAnswer" layoutX="687.0" layoutY="242.0" mnemonicParsing="false" text="Aufdecken" />
+                        <ComboBox fx:id="chooseLevelComboBox" layoutX="220.0" layoutY="278.0" prefWidth="150.0" promptText="Schwierigkeitsgrad" />
+                        <Button fx:id="btnDiscoverAnswer" layoutX="687.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleBtnDiscoverAnswerAction" text="Aufdecken" />
                         <Slider fx:id="scoreSlider" layoutX="14.0" layoutY="376.0" prefHeight="14.0" prefWidth="361.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
                         <Label layoutX="14.0" layoutY="420.0" text="Bewerte Dich selbst in %" />
                         <Label layoutX="14.0" layoutY="336.0" text="Wie vollständig wurde die Frage beantwortet ?" />
-                        <Button fx:id="btnNewQuestion" layoutX="20.0" layoutY="242.0" mnemonicParsing="false" text="Neue Frage" />
+                        <Button fx:id="btnNewQuestion" layoutX="20.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleBtnNewQuestionAction" text="Neue Frage" />
                      </children>
                   </AnchorPane>
             </content>

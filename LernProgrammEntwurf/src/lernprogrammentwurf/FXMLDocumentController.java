@@ -45,8 +45,7 @@ public class FXMLDocumentController implements Initializable
     
     @FXML
     private TextArea questionLearnField;
-    
-    
+        
     @FXML
     private TextArea answerLearnField;
     
@@ -76,7 +75,7 @@ public class FXMLDocumentController implements Initializable
     }
     
     @FXML
-    private void handleBtnNewQuestion(ActionEvent event)
+    private void handleBtnNewQuestionAction(ActionEvent event)
     {
         newQuestion = QuestionHelper.getRandomQuestion(chooseCategoryComboBox.getValue(), chooseLevelComboBox.getValue());
         questionLearnField.setText(newQuestion.getQuestion());

@@ -27,13 +27,14 @@ public class QuestionHelper
     {
         List<Integer> questionIds = new ArrayList<>();
         try{
+            
             DBConnectionBuilder myBuilder = new DBConnectionBuilder();
             Connection conn = myBuilder.getConnection();
             
-            String query ="SELECT id FROM questions WHERE category = ? AND level = ?;";
+            String query ="SELECT id FROM questions WHERE category=? AND level=?;";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, category);
-            preparedStatement.setInt(2, level);
+            preparedStatement.setString(1,category);
+            preparedStatement.setInt(2,level);
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next())
@@ -60,7 +61,7 @@ public class QuestionHelper
         List<Integer> questionIds = getQuestionIdsByCategoryAndLevel(category, level);
         int randomId = selectRandomQuestionId(questionIds);
         
-        Question randomQuestion = new Question ();
+        Question randomQuestion = new Question();
         randomQuestion.getById(randomId);
         
         return randomQuestion;
