@@ -41,7 +41,9 @@ public class QuestionHelper
             {
                 questionIds.add(rs.getInt("id"));
             }
-        } catch (SQLException ex){
+        } 
+        catch (SQLException ex)
+        {
             Logger.getLogger(QuestionHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
         

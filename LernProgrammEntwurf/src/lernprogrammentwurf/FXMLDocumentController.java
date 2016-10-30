@@ -16,6 +16,8 @@ import lernprogrammentwurf.model.Question;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
+import lernprogrammentwurf.model.Score;
 import lernprogrammentwurf.util.QuestionHelper;
 
 /**
@@ -54,8 +56,15 @@ public class FXMLDocumentController implements Initializable
 
     @FXML
     private Slider levelSlider;
+            
+    @FXML
+    private Slider scoreSlider;
     
     private Question newQuestion = null;
+    
+    private boolean scoreSaved = false;   
+    
+    private Question currentQuestion = null;
 
     @FXML
     private void handleBtnAddQuestionAction(ActionEvent event)
@@ -75,22 +84,47 @@ public class FXMLDocumentController implements Initializable
     }
     
     @FXML
-    private void handleBtnNewQuestionAction(ActionEvent event)
+    private void handleBtnNewQuestionAction(ActionEvent event) 
     {
-        newQuestion = QuestionHelper.getRandomQuestion(chooseCategoryComboBox.getValue(), chooseLevelComboBox.getValue());
-        questionLearnField.setText(newQuestion.getQuestion());
-        
-        answerLearnField.clear();
-        notesField.clear();
+        if(chooseLevelComboBox.getValue() == null || chooseCategoryComboBox.getValue() == null)
+        {
+            JOptionPane.showMessageDialog(null,"Bitte setze Level und Kategorie");
+        }
+        else
+        { 
+            currentQuestion = QuestionHelper.getRandomQuestion(chooseCategoryComboBox.getValue(), chooseLevelComboBox.getValue());
+            questionLearnField.setText(currentQuestion.getQuestion());
+            scoreSaved = false;
+
+            answerLearnField.clear(); 
+            notesField.clear();
+        }
+    }
+    @FXML
+    private void handleBtnDiscoverAnswerAction(ActionEvent event) 
+    {
+              
+        if (currentQuestion != null) 
+        {        
+            answerLearnField.setText(currentQuestion.getCorrectAnswer());
+        }
+     
     }
     
+   
     @FXML
-    private void handleBtnDiscoverAnswerAction(ActionEvent event)
+    private void handleBtnSafeScoreAction(ActionEvent event)
     {
-        
-        if (newQuestion != null)
+        if(currentQuestion != null && scoreSaved == false)
         {
-            answerLearnField.setText(newQuestion.getCorrectAnswer());
+            
+            Score toSet = new Score();
+            toSet.setScore((int)(Math.round(scoreSlider.getValue())));
+            toSet.setQuestionId(currentQuestion.getId());
+            toSet.addScore();
+            scoreSaved = true;
+            JOptionPane.showMessageDialog(null, "Score wurde gespeichert");
+            
         }
     }
 

@@ -177,4 +177,10 @@ public class Question implements IDBModel
         this.level = level;
     }
 
+    @Override
+    public void addScore() 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
 }

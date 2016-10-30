@@ -99,6 +99,7 @@
                         <Label layoutX="14.0" layoutY="420.0" text="Bewerte Dich selbst in %" />
                         <Label layoutX="14.0" layoutY="336.0" text="Wie vollständig wurde die Frage beantwortet ?" />
                         <Button fx:id="btnNewQuestion" layoutX="20.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleBtnNewQuestionAction" text="Neue Frage" />
+                        <Button fx:id="btnSafeScore" layoutX="306.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleBtnSafeScoreAction" text="Speichern" />
                      </children>
                   </AnchorPane>
             </content>

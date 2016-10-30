@@ -15,4 +15,5 @@ public interface IDBModel
     public void delete();
     public void update();
     public void find();
+    public void addScore();
 }
